@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>net.yulaoshi</groupId>
+    <artifactId>chapter1</artifactId>
+    <version>1.0.0</version>
+
+    <!--web项目需要打成war包-->
+    <packaging>war</packaging>
+
+    <!--第一步：统一源代码的编码方式-->
+    <properties>
+        <project.build.SourceEncoding>UTF-8</project.build.SourceEncoding>
+        <!--第三步：可选配置，如果在使用maven打包时想跳过单元测试-->
+        <skipTests>true</skipTests>
+    </properties>
+
+    <dependencies>
+
+        <!--Servlet-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.1.0</version>
+            <scope>provided</scope><!--只需要参与编译-->
+        </dependency>
+        <!--JSP-->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+            <scope>provided</scope><!--只需要参与编译-->
+        </dependency>
+        <!--JSTL-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+
+    <!--第二步：统一源代码与编译输出的JDK版本-->
+    <build>
+        <plugins>
+            <!--Tomcat-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/${project.artifactId}</path>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
